@@ -3,6 +3,49 @@
 ## Objetivo
 Desenvolver soluções Utilizando Inteligência Artificial, para maximizar o resultado nos negócios de diferentes organizações.
 
+## Conceitos
+### Equação de Bellman
+- Estado (s): Onde o agente se encontra no tempo atual;
+- Ação(a): Ação que o agente irá executar;
+- Recompensa (R): Retorno obtido pelo agente após executar tal ação;
+- Gamma(γ): Fator de desconto.
+```
+V(s) = max(R(s,a) + γ * V(s'))
+        a
+```
+#### Markov Decision Process (MDP)
+Um processo estocástico possúi a propriedade Markov se a distribuição de probabilidade condicional de estados futuros do processo (concional em estados passados e presentes) depende apenas do estado presente, não da sequência de eventos que o precedeu. Ou seja, descisões passadas não tem relevância.
+
+Então, o MDP fornece uma estrutura matemática para modelar a tomada de decisões em situações onde os resultados são parcialmente aleatórios e parcialmente sobre o controle de um tomador de decisão.
+
+O MDP pode ser adicionado na equação de Bellman, conforma a seguir:
+- Probabilidade (P): Probabilidade de o agente executar determinada ação.
+```
+V(s) = max(R(s,a) + γ * Sum(P(s,a,s') * V(s')))
+        a
+```
+
+### Living Panalty
+Consiste na penalidade aplicada ao agente por se manter no ambiente sem resolver o problema. Quanto mais o agente se manter no ambiente sem resolver o problema, mas pontos ele perde, isso força com que ele busque resolver o problema.
+
+É necessário tomar cuidado para não incluir uma penalidade muito alta em situações onde há outras situações que descontam pontuação, em um jogo com um precipício que o jogador perde ao cair, pois se a *living penalty* for maior do que a penalidade por cair no precipício a tendência é que ele caia, pois para ele será mais vantajoso.
+
+### Q-Learning
+- Qualidade (Q): Qualidade de cada ação.
+
+```
+Q(s,a) = R(s,a) + γ * Sum(P(s,a,s') * max(Q(s',a'))
+                                       a'
+```
+
+### Diferença Temporal
+- Taxa de Aprendizado(α)
+- Tempo (t)
+
+```
+Qt(s,a) = Qt-1(s,a) + α(R(s,a) + γ(max(Q(s',a')) - Qt-1(s,a))
+```
+
 ## Projetos
 
 ### Otimizar processos de negócios
